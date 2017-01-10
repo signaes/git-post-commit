@@ -1,0 +1,10 @@
+#! /usr/local/bin/ruby
+
+branch = `git branch`.split(' ')[1]
+remotes = `git remote -v`.split(' ').reject { |i| i =~ /\(/ || i =~ /:/ }.uniq
+
+remotes.map do |remote|
+  puts "pushing to #{remote} in branch: #{branch}"
+
+  system "git push #{remote} #{branch}"
+end
