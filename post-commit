@@ -1,6 +1,6 @@
 #! /usr/local/bin/ruby
 
-branch = `git branch`.split(' ')[1]
+branch = `git branch`.split('*')[1].split(' ')[0]
 remotes = `git remote -v`.split(' ').reject { |i| i =~ /\(/ || i =~ /:/ }.uniq
 
 remotes.map do |remote|
